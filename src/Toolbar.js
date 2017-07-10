@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
-import './index.css';
+
 
 class Toolbar extends Component{
 
   render(){
+
+    var checkAllStatus = 'fa-minus-square-o';
+    if(this.props.numSelected === 0){
+      checkAllStatus = 'fa-square-o';
+    }
+    else if (this.props.numSelected === this.props.totalMessages){
+      checkAllStatus = 'fa-check-square-o';
+    }
+
     return (
     <div className="row toolbar">
       <div className="col-md-12">
@@ -13,7 +22,7 @@ class Toolbar extends Component{
         </p>
 
         <button className="btn btn-default">
-          <i className="fa fa-minus-square-o"></i>
+          <i className={"fa " + checkAllStatus}></i>
         </button>
 
         <button className="btn btn-default">

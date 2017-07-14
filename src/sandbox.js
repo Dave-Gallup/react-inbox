@@ -10,8 +10,12 @@ class Sandbox{
   }
 
   formatState(json){
-    var state = {};
-    json.forEach(msg => state[msg.id] = msg);
+    var state = { messageList: [], messages: {} };
+    json.forEach(msg => {
+      state.messageList.push(msg.id);
+      state.messages[msg.id] = msg;
+    });
+    console.log(state);
     return state;
   }
 

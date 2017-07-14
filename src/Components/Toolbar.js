@@ -8,10 +8,11 @@ class Toolbar extends Component{
 
     this.ignoreLabel = 'Apply label';
 
-    this.onSelectClick = this.onSelectClick.bind(this);
-    this.onMarkReadClick = this.onMarkReadClick.bind(this);
+    this.onSelectClick     = this.onSelectClick.bind(this);
+    this.onMarkReadClick   = this.onMarkReadClick.bind(this);
     this.onMarkUnreadClick = this.onMarkUnreadClick.bind(this);
-    this.onLabelChange = this.onLabelChange.bind(this);
+    this.onLabelChange     = this.onLabelChange.bind(this);
+    this.onTrashClick      = this.onTrashClick.bind(this);
   }
 
   onSelectClick(){
@@ -24,11 +25,11 @@ class Toolbar extends Component{
   }
 
   onMarkReadClick(){
-    this.props.updateState({read:true});
+    this.props.updateState({read: true});
   }
 
   onMarkUnreadClick(){
-    this.props.updateState({read:false});
+    this.props.updateState({read: false});
   }
 
   onLabelChange(e){
@@ -41,6 +42,10 @@ class Toolbar extends Component{
       }
       this.props.updateLabels(e.target.value, adding);
     }
+  }
+
+  onTrashClick(){
+    this.props.updateState(null);
   }
 
   render(){
@@ -89,7 +94,7 @@ class Toolbar extends Component{
           <option value="gschool">gschool</option>
         </select>
 
-        <button className="btn btn-default" disabled={isDisabled}>
+        <button className="btn btn-default" disabled={isDisabled} onClick={this.onTrashClick}>
           <i className="fa fa-trash-o"></i>
         </button>
       </div>

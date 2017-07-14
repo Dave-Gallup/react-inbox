@@ -8,13 +8,12 @@ class Messages extends Component{
 
     var messages = [];
 
-    for(let key in this.props.messages){
-
+    for(let key of this.props.appState.messageList){
       messages.push(
         <Message
         updateState={this.props.updateState}
-        subject={this.props.messages[key].subject} labels={this.props.messages[key].labels} starred={this.props.messages[key].starred} read={this.props.messages[key].read} selected={this.props.messages[key].selected} id={this.props.messages[key].id}
-        key={this.props.messages[key].id}/>
+        subject={this.props.appState.messages[key].subject} labels={this.props.appState.messages[key].labels} starred={this.props.appState.messages[key].starred} read={this.props.appState.messages[key].read} selected={this.props.appState.messages[key].selected} id={this.props.appState.messages[key].id}
+        key={this.props.appState.messages[key].id}/>
       );
     }
     return messages;

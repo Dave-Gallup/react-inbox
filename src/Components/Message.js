@@ -6,12 +6,12 @@ class Message extends Component{
   constructor(props){
     super(props);
 
-    this.onCheckboxClick = this.onCheckboxClick.bind(this);
+    this.onCheckboxChange = this.onCheckboxChange.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
   }
 
 
-  onCheckboxClick(){
+  onCheckboxChange(){
     var change = {};
     change.selected = !this.props.selected;
     this.props.updateState(change, this.props.id);
@@ -33,20 +33,21 @@ class Message extends Component{
 
 
 
+
     return (
       <div className={"row message " + read + " " + selectedBg} >
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" checked={"" + selectedBox} onClick={this.onCheckboxClick}/>
+              <input type="checkbox" checked={"" + selectedBox} onChange={this.onCheckboxChange}/>
             </div>
             <div className="col-xs-2">
               <i className={"star fa " + star} onClick={this.onStarClick}></i>
             </div>
           </div>
         </div>
-        <div className="col-xs-11 text-left" onClick={this.onCheckboxClick}>
-          {this.props.labels.map((el, i) => <Label label={el} key={i}/>)}
+        <div className="col-xs-11 text-left" onClick={this.onCheckboxChange}>
+          {this.props.labels.map((el) => <Label label={el} key={el}/>)}
           <a>
             {this.props.subject}
           </a>

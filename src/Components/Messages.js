@@ -9,7 +9,7 @@ class Messages extends Component{
     var messages = [];
 
     for(let key in this.props.messages){
-      console.log(key);
+
       messages.push(
         <Message
         updateState={this.props.updateState}

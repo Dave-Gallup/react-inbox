@@ -34,7 +34,7 @@ class Message extends Component{
 
 
     return (
-      <div className={"row message " + read + " " + selectedBg}>
+      <div className={"row message " + read + " " + selectedBg} >
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
@@ -45,9 +45,9 @@ class Message extends Component{
             </div>
           </div>
         </div>
-        <div className="col-xs-11 text-left">
+        <div className="col-xs-11 text-left" onClick={this.onCheckboxClick}>
           {this.props.labels.map((el, i) => <Label label={el} key={i}/>)}
-          <a href="#">
+          <a>
             {this.props.subject}
           </a>
         </div>

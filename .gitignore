@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+/sandbox.js
 
 # production
 /build

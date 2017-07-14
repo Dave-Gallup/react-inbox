@@ -3,13 +3,37 @@ import React, { Component } from 'react';
 
 class Toolbar extends Component{
 
-  render(){
+  constructor(props){
+    super(props);
 
+    this.onSelectClick = this.onSelectClick.bind(this);
+    this.onMarkReadClick = this.onMarkReadClick.bind(this);
+    this.onMarkUnreadClick = this.onMarkUnreadClick.bind(this);
+  }
+
+  onSelectClick(){
+    if(this.props.selectedStatus === 'none'){
+      this.props.updateState({selected: false}, -1);
+    }
+    else{
+      this.props.updateState({selected: true}, -1);
+    }
+  }
+
+  onMarkReadClick(){
+    this.props.updateState({read:true});
+  }
+
+  onMarkUnreadClick(){
+    this.props.updateState({read:false});
+  }
+
+  render(){
     var checkAllStatus = 'fa-minus-square-o';
-    if(this.props.numSelected === 0){
+    if(this.props.selectedStatus === 'all'){
       checkAllStatus = 'fa-square-o';
     }
-    else if (this.props.numSelected === this.props.totalMessages){
+    else if (this.props.selectedStatus === 'none'){
       checkAllStatus = 'fa-check-square-o';
     }
 
@@ -21,15 +45,15 @@ class Toolbar extends Component{
           unread messages
         </p>
 
-        <button className="btn btn-default">
+        <button className="btn btn-default" onClick={this.onSelectClick}>
           <i className={"fa " + checkAllStatus}></i>
         </button>
 
-        <button className="btn btn-default">
+        <button className="btn btn-default" onClick={this.onMarkReadClick}>
           Mark As Read
         </button>
 
-        <button className="btn btn-default">
+        <button className="btn btn-default" onClick={this.onMarkUnreadClick}>
           Mark As Unread
         </button>
 

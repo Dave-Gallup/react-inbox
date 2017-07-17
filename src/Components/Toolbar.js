@@ -13,6 +13,7 @@ class Toolbar extends Component{
     this.onMarkUnreadClick = this.onMarkUnreadClick.bind(this);
     this.onLabelChange     = this.onLabelChange.bind(this);
     this.onTrashClick      = this.onTrashClick.bind(this);
+    this.onComposeClick    = this.onComposeClick.bind(this);
   }
 
   onSelectClick(){
@@ -45,7 +46,11 @@ class Toolbar extends Component{
   }
 
   onTrashClick(){
-    this.props.updateState(null);
+    this.props.updateDeletes();
+  }
+
+  onComposeClick(){
+    this.props.updateComposeToggle();
   }
 
   render(){
@@ -67,7 +72,9 @@ class Toolbar extends Component{
           <span className="badge badge">{this.props.numRead}</span>
           unread messages
         </p>
-
+        <a className="btn btn-danger" onClick={this.onComposeClick}>
+              <i className="fa fa-plus"></i>
+        </a>
         <button className="btn btn-default" onClick={this.onSelectClick}>
           <i className={"fa " + checkAllStatus}></i>
         </button>

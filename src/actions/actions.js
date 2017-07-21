@@ -1,5 +1,6 @@
 export const MESSAGES_RECEIVED = 'MESSAGES_RECEIVED';
-export const MESSAGE_SELECTED = 'MESSAGE_SELECTED';
+export const TOGGLE_SELECTED  = 'TOGGLE_SELECTED';
+export const TOGGLE_STARRED   = 'TOGGLE_STARRED';
 
 export function messagesReceived(messages){
   return {
@@ -8,13 +9,19 @@ export function messagesReceived(messages){
   }
 }
 
-export function messageSelected(id){
+export function toggleSelected(id){
   return {
-    type: MESSAGE_SELECTED,
+    type: TOGGLE_SELECTED,
     id
   }
 }
 
+export function toggleStarred(id){
+  return {
+    type: TOGGLE_STARRED,
+    id
+  }
+}
 
 export function fetchMessages(){
   return (dispatch, getState, { Api }) => {
@@ -28,6 +35,3 @@ export function fetchMessages(){
   }
 }
 
-// export function updateNumUnread(){
-//   return { type: MESSAGES_LOADED};
-// }

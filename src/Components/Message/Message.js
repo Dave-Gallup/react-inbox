@@ -2,10 +2,24 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Label from '../Label/Label.js';
-// import { fetchMessages } from '../../actions/actions';
+import { toggleSelected, toggleStarred } from '../../actions/actions';
 
 class Message extends Component{
 
+  constructor(props){
+    super(props);
+
+    this.onSelectedChange = this.onSelectedChange.bind(this);
+    this.onStarredChange = this.onStarredChange.bind(this);
+  }
+
+  onSelectedChange(){
+    this.props.toggleSelected(this.props.id);
+  }
+
+  onStarredChange(){
+    this.props.toggleStarred(this.props.id);
+  }
 
   render(){
     return (
@@ -13,10 +27,10 @@ class Message extends Component{
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" checked={this.props.selected ? 'checked' : ''} />
+              <input type="checkbox" checked={this.props.selected ? 'checked' : ''} onChange={this.onSelectedChange}/>
             </div>
             <div className="col-xs-2">
-              <i className={`star fa ${this.props.starred?'fa-star':'fa-star-o'}`} />
+              <i className={`star fa ${this.props.starred?'fa-star':'fa-star-o'}`} onClick={this.onStarredChange}/>
             </div>
           </div>
         </div>
@@ -92,7 +106,7 @@ class Message extends Component{
 
 const mapStateToProps = (state, ownProps) => {
 
-  const subject   = state.messages.messageMap[ownProps.id].subject;
+  const subject  = state.messages.messageMap[ownProps.id].subject;
   const labels   = state.messages.messageMap[ownProps.id].labels;
   const starred  = state.messages.messageMap[ownProps.id].starred;
   const read     = state.messages.messageMap[ownProps.id].read;
@@ -107,7 +121,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  // fetchMessages
+  toggleSelected,
+  toggleStarred
 },
 dispatch);
 

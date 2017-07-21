@@ -11,10 +11,9 @@ class Messages extends Component{
   }
 
   render(){
-    console.log(this.props.messages);
     return (
       <div className="messages-list">
-        <Message />
+        {this.props.messageList.map(msg => <Message key={msg} id={msg}/>)}
       </div>
     );
   }
@@ -44,9 +43,11 @@ class Messages extends Component{
 }
 
 const mapStateToProps = state => {
-  const messages = state.messages;
+  const messageMap = state.messages.messageMap;
+  const messageList = state.messages.messageList;
   return {
-    messages
+    messageMap,
+    messageList
   }
 };
 

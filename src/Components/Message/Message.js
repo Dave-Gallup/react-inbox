@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+// import { fetchMessages } from '../../actions/actions';
 // import Label from '../Label/Label.js';
 
 class Message extends Component{
 
-  render(){
 
+  render(){
     return (
-      <div  >
+      <div  className={`row message ${this.props.read?'':'un'}read ${this.props.selected?'selected':''}`}>
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" checked={false} />
+              <input type="checkbox" checked={this.props.selected ? 'checked' : ''} />
             </div>
             <div className="col-xs-2">
-              <i className={"star fa "} ></i>
+              <i className={`star fa ${this.props.starred?'fa-star':'fa-star-o'}`} />
             </div>
           </div>
         </div>
         <div className="col-xs-11 text-left" >
-
-          <a>
-            {}
-          </a>
+          <a>{this.props.subject}</a>
         </div>
       </div>
     );
@@ -77,5 +77,40 @@ class Message extends Component{
 
 }
 
+// updateState={this.props.updateState}
+// subject={this.props.appState.messages[key].subject}
+// labels={this.props.appState.messages[key].labels}
+// starred={this.props.appState.messages[key].starred}
+// read={this.props.appState.messages[key].read}
+// selected={this.props.appState.messages[key].selected}
+// id={this.props.appState.messages[key].id}
+// key={this.props.appState.messages[key].id}
 
-export default Message;
+
+const mapStateToProps = (state, ownProps) => {
+
+  const subject   = state.messages.messageMap[ownProps.id].subject;
+  const labels   = state.messages.messageMap[ownProps.id].labels;
+  const starred  = state.messages.messageMap[ownProps.id].starred;
+  const read     = state.messages.messageMap[ownProps.id].read;
+  const selected = state.messages.messageMap[ownProps.id].selected;
+  return {
+    subject,
+    labels,
+    starred,
+    read,
+    selected
+  }
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  // fetchMessages
+},
+dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Message);
+
+

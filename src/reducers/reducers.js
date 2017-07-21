@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { MESSAGES_RECEIVED } from '../actions/actions';
 
-export function messages(state = { messageList:[], messages:{} }, action) {
+export function messages(state = { messageList:[], messageMap:{} }, action) {
   switch (action.type) {
     case MESSAGES_RECEIVED:
       return formatState(action.messages);
@@ -18,10 +18,11 @@ export default combineReducers({
 
 
 function formatState(json){
-  var state = { messageList: [], messages: {} };
+  var state = { messageList: [], messageMap: {} };
   json.forEach(msg => {
     state.messageList.push(msg.id);
-    state.messages[msg.id] = msg;
+    state.messageMap[msg.id] = msg;
+    state.messageMap[msg.id].selected = false;
   });
   return state;
 }

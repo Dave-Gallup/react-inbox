@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Label from '../Label/Label.js';
 // import { fetchMessages } from '../../actions/actions';
-// import Label from '../Label/Label.js';
 
 class Message extends Component{
 
@@ -21,7 +21,10 @@ class Message extends Component{
           </div>
         </div>
         <div className="col-xs-11 text-left" >
-          <a>{this.props.subject}</a>
+          <a>
+            {this.props.labels.map((el, i) => <Label key={el} messageId={this.props.id} labelId={i}/>)}
+            {this.props.subject}
+          </a>
         </div>
       </div>
     );

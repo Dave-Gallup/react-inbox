@@ -17,6 +17,11 @@ export default combineReducers({
 
 
 
+
+
+
+/********** Helper functions ***********/
+
 function formatState(json){
   var state = { messageList: [], messageMap: {} };
   json.forEach(msg => {

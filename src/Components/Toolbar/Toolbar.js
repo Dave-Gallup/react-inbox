@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+// import { updateNumUnread } from '../../actions/actions';
 
 class Toolbar extends Component{
 
-  render(){
+  checkboxClass(){
+    if(this.props.numSelected === 0){
+      return 'fa-square-o';
+    }
+    if(this.props.numSelected === this.props.totalMessages){
+      return 'fa-check-square-o';
+    }
+    return 'fa-minus-square-o';
+  }
 
+  render(){
     return (
       <div className="row toolbar">
         <div className="col-md-12">
-          <p className="pull-right">
-            <span className="badge badge">{99}</span>
+          <p className="pull-right" >
+            <span className="badge badge" >
+            {this.props.numUnread <0?' ':this.props.numUnread}</span>
             unread messages
           </p>
           <a className="btn btn-danger" >
             <i className="fa fa-plus"></i>
           </a>
           <button className="btn btn-default" >
-            <i className={"fa "}></i>
+            <i className={`fa ${this.checkboxClass()}`}></i>
           </button>
 
           <button className="btn btn-default"  disabled={false}>
@@ -157,5 +169,32 @@ class Toolbar extends Component{
 
 }
 
+const mapStateToProps = (state) => {
 
-export default Toolbar;
+  const numUnread = state.messages.messageList.reduce(
+    (tot, i)=> state.messages.messageMap[i].read?tot+1:tot, 0
+  );
+  const numSelected = state.messages.messageList.reduce(
+    (tot, i)=> state.messages.messageMap[i].selected?tot+1:tot, 0
+  );
+  const totalMessages = state.messages.messageList.length;
+
+
+  return {
+    numUnread,
+    numSelected,
+    totalMessages
+  }
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  // updateNumUnread
+},
+dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Toolbar);
+
+

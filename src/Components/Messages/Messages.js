@@ -11,6 +11,7 @@ class Messages extends Component{
   }
 
   render(){
+    console.log(this.props.messages);
     return (
       <div className="messages-list">
         <Message />
@@ -43,11 +44,9 @@ class Messages extends Component{
 }
 
 const mapStateToProps = state => {
-  // const productsById = state.products.productsById;
-  // const productIds = state.products.ids;
+  const messages = state.messages;
   return {
-    // productIds,
-    // productsById
+    messages
   }
 };
 

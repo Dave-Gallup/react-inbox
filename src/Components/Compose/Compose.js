@@ -3,18 +3,6 @@ import React, { Component } from 'react';
 
 class Compose extends Component{
 
-  constructor(props){
-    super(props);
-
-    this.onSendClick = this.onSendClick.bind(this);
-  }
-
-  onSendClick(e){
-    e.preventDefault();
-    var subject = document.getElementById('subject').value;
-    var body = document.getElementById('body').value;
-    this.props.updateSendMessage(subject, body);
-  }
 
   render(){
 
@@ -41,7 +29,7 @@ class Compose extends Component{
         </div>
         <div className="form-group">
           <div className="col-sm-8 col-sm-offset-2">
-            <input type="submit" value="Send" className="btn btn-primary" onClick={this.onSendClick}/>
+            <input type="submit" value="Send" className="btn btn-primary" onClick={"#"}/>
           </div>
         </div>
       </form>
@@ -49,7 +37,28 @@ class Compose extends Component{
 
   }
 
+  // constructor(props){
+  //   super(props);
+  //
+  //   this.onSendClick = this.onSendClick.bind(this);
+  // }
+  //
+  // onSendClick(e){
+  //   e.preventDefault();
+  //   var subject = document.getElementById('subject').value;
+  //   var body = document.getElementById('body').value;
+  //   this.props.updateSendMessage(subject, body);
+  // }
 }
 
 
 export default Compose;
+
+
+
+
+
+
+
+
+

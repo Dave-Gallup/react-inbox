@@ -4,13 +4,13 @@ import { MESSAGES_RECEIVED } from '../actions/actions';
 export function messages(state = { messageList:[], messages:{} }, action) {
   switch (action.type) {
     case MESSAGES_RECEIVED:
-      const { items } = action;
+      const { messages } = action;
       return {
-        ids: items.map((item) => {
-          return item.id;
+        ids: messages.map((msg) => {
+          return msg.id;
         }),
-        itemsById: items.reduce((result, item) => {
-          result[item.id] = item;
+        itemsById: messages.reduce((result, msg) => {
+          result[msg.id] = msg;
           return result;
         }, {})
       }

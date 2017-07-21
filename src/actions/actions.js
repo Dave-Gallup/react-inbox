@@ -8,16 +8,6 @@ export function messagesReceived(messages){
 }
 
 
-
-
-
-
-
-
-
-
-
-
 export function fetchMessages(){
   return (dispatch, getState, { Api }) => {
     const state = getState();
@@ -25,7 +15,7 @@ export function fetchMessages(){
     // only if the state is empty or undefined, fetch messages from API
     if(!state.messages.length){
       Api.fetchAllMessages()
-      .then(json => dispatch(messagesReceived(json._embedded.products)));
+      .then(json => dispatch(messagesReceived(json._embedded.messages)));
     }
   }
 }

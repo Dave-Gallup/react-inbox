@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Label from '../Label/Label.js';
+// import Label from '../Label/Label.js';
 
 class Message extends Component{
 

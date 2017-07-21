@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Messages from './Components/Messages/Messages.js'
 import Toolbar  from './Components/Toolbar/Toolbar.js'
-import Compose  from './Components/Compose/Compose.js'
+// import Compose  from './Components/Compose/Compose.js'
 
+// import Api from './utils/Api';
 
 class App extends Component {
+
 
 
   render() {
@@ -333,8 +335,13 @@ class App extends Component {
   //   }
   //   return ids;
   // }
-
+  
+  // static testFn(){
+  //   return fetch(`http://localhost:8181/api/messages`)
+  //   .then(response => response.json())
+  //   .then(json => console.log(json._embedded.messages));
+  // }
 
 }
-
+// App.testFn();
 export default App;

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import Message from '../Message/Message.js'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Message from '../Message/Message.js';
+import { fetchMessages } from '../../actions/actions';
 
 class Messages extends Component{
 
+  componentDidMount() {
+    this.props.fetchMessages();
+  }
 
   render(){
     return (
@@ -36,5 +42,22 @@ class Messages extends Component{
 
 }
 
+const mapStateToProps = state => {
+  // const productsById = state.products.productsById;
+  // const productIds = state.products.ids;
+  return {
+    // productIds,
+    // productsById
+  }
+};
 
-export default Messages;
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchMessages
+},
+dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Messages);
+

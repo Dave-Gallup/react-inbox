@@ -1,4 +1,4 @@
-var allMessages = require('./seeds.json');
+
 
 
 class Sandbox{
@@ -25,4 +25,4 @@ class Sandbox{
 
 
 
-var test = new Sandbox();
+var test = new Api();

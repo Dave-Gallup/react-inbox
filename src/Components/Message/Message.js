@@ -10,14 +10,14 @@ class Message extends Component{
     super(props);
 
     this.onSelectedChange = this.onSelectedChange.bind(this);
-    this.onStarredChange = this.onStarredChange.bind(this);
+    this.onStarredClick = this.onStarredClick.bind(this);
   }
 
   onSelectedChange(){
     this.props.toggleSelected(this.props.id);
   }
 
-  onStarredChange(){
+  onStarredClick(){
     this.props.toggleStarred(this.props.id);
   }
 
@@ -30,7 +30,7 @@ class Message extends Component{
               <input type="checkbox" checked={this.props.selected ? 'checked' : ''} onChange={this.onSelectedChange}/>
             </div>
             <div className="col-xs-2">
-              <i className={`star fa ${this.props.starred?'fa-star':'fa-star-o'}`} onClick={this.onStarredChange}/>
+              <i className={`star fa ${this.props.starred?'fa-star':'fa-star-o'}`} onClick={this.onStarredClick}/>
             </div>
           </div>
         </div>

@@ -86,29 +86,29 @@ class Toolbar extends Component{
             <i className={`fa ${this.checkboxClass()}`} onClick={this.onSelectAllClick}></i>
           </button>
 
-          <button className="btn btn-default"  disabled={false}  onClick={this.onReadClick}>
+          <button className="btn btn-default" disabled={this.props.selectedIds.length === 0?true:false}  onClick={this.onReadClick}>
             Mark As Read
           </button>
 
-          <button className="btn btn-default"  disabled={false} onClick={this.onUnreadClick}>
+          <button className="btn btn-default"  disabled={this.props.selectedIds.length === 0?true:false} onClick={this.onUnreadClick}>
             Mark As Unread
           </button>
 
-          <select className="form-control label-select" name="addLabel"  disabled={false} onChange={this.onAddLabelChange}>
+          <select className="form-control label-select" name="addLabel"  disabled={this.props.selectedIds.length === 0?true:false} onChange={this.onAddLabelChange}>
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <select className="form-control label-select" name="removeLabel"  disabled={false} onChange={this.onRemoveLabelChange}>
+          <select className="form-control label-select" name="removeLabel"  disabled={this.props.selectedIds.length === 0?true:false} onChange={this.onRemoveLabelChange}>
             <option>Remove label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <button className="btn btn-default" disabled={false} >
+          <button className="btn btn-default" disabled={this.props.selectedIds.length === 0?true:false} >
             <i className="fa fa-trash-o" onClick={this.onDeleteClick}></i>
           </button>
         </div>

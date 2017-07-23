@@ -34,6 +34,7 @@ class Toolbar extends Component{
   }
 
   onSelectAllClick(){
+    console.log('click');
     if(this.props.selectedIds.length === this.props.totalMessages){
       this.props.unselectAll();
     }
@@ -79,11 +80,11 @@ class Toolbar extends Component{
             {this.props.numUnread <0?' ':this.props.numUnread}</span>
             unread messages
           </p>
-          <a className="btn btn-danger" >
-            <i className="fa fa-plus" onClick={this.onComposeClick}></i>
+          <a className="btn btn-danger"  onClick={this.onComposeClick}>
+            <i className="fa fa-plus"></i>
           </a>
-          <button className="btn btn-default" >
-            <i className={`fa ${this.checkboxClass()}`} onClick={this.onSelectAllClick}></i>
+          <button className="btn btn-default" onClick={this.onSelectAllClick}>
+            <i className={`fa ${this.checkboxClass()}`} ></i>
           </button>
 
           <button className="btn btn-default" disabled={this.props.selectedIds.length === 0?true:false}  onClick={this.onReadClick}>

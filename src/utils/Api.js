@@ -86,7 +86,7 @@ export default class Api {
   static postSendMessage(messageSubject, messageBody){
     var newSubjectStr = Api.copyString(messageSubject);
     var newBodyStr = Api.copyString(messageBody);
-    console.log(newSubjectStr);
+
     var newBody = {
       "subject": newSubjectStr,
       "body": newBodyStr
@@ -108,6 +108,11 @@ export default class Api {
       newStr += str[i];
     }
     return newStr;
+  }
+
+  static getBody(id){
+    return fetch(`${URI}/messages/${id}`)
+    .then(response => response.json());
   }
 
 

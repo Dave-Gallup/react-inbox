@@ -8,6 +8,7 @@ export const ADD_LABEL         = 'ADD_LABEL';
 export const REMOVE_LABEL      = 'REMOVE_LABEL';
 export const DELETE_MESSAGES   = 'DELETE_MESSAGES';
 export const ADD_MESSAGE       = 'ADD_MESSAGE';
+export const GET_BODY          = 'GET_BODY';
 
 
 export function toggleSelected(id){
@@ -105,18 +106,28 @@ export function deleteMessages(ids){
 
 export function addMessage(subject, body){
   return (dispatch, getState, { Api }) => {
-    console.log('adding ', subject, body);
+
     Api.postSendMessage(subject, body)
     .then(result => {
       if(result.status === 200){
-        dispatch({type:ADD_MESSAGE, result})
+        dispatch({type:ADD_MESSAGE, result});
       }
     })
     .catch(err => err);
   }
 }
 
+export function getBody(id){
 
+  return (dispatch, getState, { Api }) => {
+    Api.getBody(id)
+    .then(result => {
+      dispatch({type:GET_BODY, id, body: result.body});
+
+    })
+    .catch(err => err);
+  }
+}
 
 
 

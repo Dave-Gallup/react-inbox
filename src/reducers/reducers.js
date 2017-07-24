@@ -9,7 +9,8 @@ import {
   ADD_LABEL,
   REMOVE_LABEL,
   DELETE_MESSAGES,
-  ADD_MESSAGE
+  ADD_MESSAGE,
+  GET_BODY
 } from '../actions/actions';
 
 export function messages(state = { messageList:[], messageMap:{} }, action) {
@@ -45,6 +46,9 @@ export function messages(state = { messageList:[], messageMap:{} }, action) {
     case ADD_MESSAGE:
       return addMessage(state, action.result);
 
+    case GET_BODY:
+      return updateState(state, action.id, {read: true, body: action.body});
+
     default:
       return state;
   }
@@ -73,7 +77,6 @@ function formatState(json){
 
 function updateState(state, ids, change){
 
-  // ids = getIdArray(state, ids);
   if(typeof ids === 'number'){
     ids = [ids];
   }
@@ -139,6 +142,7 @@ function addMessage(state, result){
     };
   return newState;
 }
+
 
 
 

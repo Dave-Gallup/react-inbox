@@ -15,9 +15,7 @@ class Compose extends Component{
     e.preventDefault();
     var subject = document.getElementById('subject').value;
     var body = document.getElementById('body').value;
-    // var subject = e.target.subject;
-    // var body = e.target.body;
-    console.log(`Subject: ${subject}`);
+
     window.location.href='http://localhost:3000/';
     this.props.addMessage(subject, body);
   }
@@ -52,18 +50,6 @@ class Compose extends Component{
 
   }
 
-  // constructor(props){
-  //   super(props);
-  //
-  //   this.onSendClick = this.onSendClick.bind(this);
-  // }
-  //
-  // onSendClick(e){
-  //   e.preventDefault();
-  //   var subject = document.getElementById('subject').value;
-  //   var body = document.getElementById('body').value;
-  //   this.props.updateSendMessage(subject, body);
-  // }
 }
 
 

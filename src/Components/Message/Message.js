@@ -3,7 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Label from '../Label/Label.js';
 import Body from '../Body/Body.js';
-import { toggleSelected, toggleStarred, setRead } from '../../actions/actions';
+import {
+  toggleSelected,
+  toggleStarred,
+  setRead,
+} from '../../actions/actions';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class Message extends Component{
@@ -64,67 +68,10 @@ class Message extends Component{
       </div>
     );
   }
-  //parseInt(match.params.id) === this.props.id ? 'this' : ''
-  // render(){
-  //   var star = this.props.starred ? 'fa-star' : 'fa-star-o';
-  //   var read = this.props.read ? 'read' : 'unread';
-  //   var selectedBox = this.props.selected ? 'checked' : '';
-  //   var selectedBg = this.props.selected ? 'selected' : '';
-  //
-  //   return (
-  //     <div className={"row message " + read + " " + selectedBg} >
-  //     <div className="col-xs-1">
-  //     <div className="row">
-  //     <div className="col-xs-2">
-  //     <input type="checkbox" checked={"" + selectedBox} onChange={this.onCheckboxChange}/>
-  //     </div>
-  //     <div className="col-xs-2">
-  //     <i className={"star fa " + star} onClick={this.onStarClick}></i>
-  //     </div>
-  //     </div>
-  //     </div>
-  //     <div className="col-xs-11 text-left" onClick={this.onCheckboxChange}>
-  //     {this.props.labels.map((el) => <Label label={el} key={el}/>)}
-  //     <a>
-  //     {this.props.subject}
-  //     </a>
-  //     </div>
-  //     </div>
-  //   );
-  // }
-  // constructor(props){
-  //   super(props);
-  //
-  //   this.onCheckboxChange = this.onCheckboxChange.bind(this);
-  //   this.onStarClick = this.onStarClick.bind(this);
-  // }
-  //
-  //
-  // onCheckboxChange(){
-  //   var change = {};
-  //   change.selected = !this.props.selected;
-  //   this.props.updateState(change, this.props.id);
-  // }
-  //
-  // onStarClick(){
-  //   var change = {};
-  //   change.starred = !this.props.starred;
-  //   this.props.updateState(change, this.props.id);
-  // }
 
 
 
 }
-
-// updateState={this.props.updateState}
-// subject={this.props.appState.messages[key].subject}
-// labels={this.props.appState.messages[key].labels}
-// starred={this.props.appState.messages[key].starred}
-// read={this.props.appState.messages[key].read}
-// selected={this.props.appState.messages[key].selected}
-// id={this.props.appState.messages[key].id}
-// key={this.props.appState.messages[key].id}
-
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -133,12 +80,14 @@ const mapStateToProps = (state, ownProps) => {
   const starred  = state.messages.messageMap[ownProps.id].starred;
   const read     = state.messages.messageMap[ownProps.id].read;
   const selected = state.messages.messageMap[ownProps.id].selected;
+  const body     = state.messages.messageMap[ownProps.id].body;
   return {
     subject,
     labels,
     starred,
     read,
-    selected
+    selected,
+    body
   }
 };
 

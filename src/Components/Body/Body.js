@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import {getBody} from '../../actions/actions';
+
 
 class Body extends Component{
 
+  componentDidMount(){
+    this.props.getBody(this.props.id);
+  }
 
 
   render(){
@@ -19,7 +24,7 @@ class Body extends Component{
         </div>
         <div className="col-xs-11 text-left" >
           <div className="message-body">
-            test
+            {this.props.body}
           </div>
         </div>
       </div>
@@ -27,17 +32,16 @@ class Body extends Component{
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 
-  const body = 5;
+  const body = state.messages.messageMap[ownProps.id].body;
 
   return {
     body
   }
 };
 const mapDispatchToProps = dispatch => bindActionCreators({
-  // toggleSelected,
-  // toggleStarred
+  getBody
 },
 dispatch);
 

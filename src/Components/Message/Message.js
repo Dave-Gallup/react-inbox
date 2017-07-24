@@ -13,6 +13,7 @@ class Message extends Component{
 
     this.onSelectedChange = this.onSelectedChange.bind(this);
     this.onStarredClick = this.onStarredClick.bind(this);
+    this.onSubjectClick = this.onSubjectClick.bind(this);
   }
 
   onSelectedChange(){
@@ -22,6 +23,17 @@ class Message extends Component{
   onStarredClick(){
     this.props.toggleStarred(this.props.id);
   }
+
+  onSubjectClick(){
+    if(window.location.pathname === `/message/${this.props.id}`){
+      window.location.href='http://localhost:3000/';
+    }
+    else{
+      window.location.href=`http://localhost:3000/message/${this.props.id}`;
+    }
+
+  }
+
 
   render(){
     return (
@@ -37,13 +49,15 @@ class Message extends Component{
           </div>
         </div>
         <div className="col-xs-11 text-left" >
-          <a>
+
+          <a onClick={this.onSubjectClick}>
             {this.props.labels.map((el, i) => <Label key={el} messageId={this.props.id} labelId={i}/>)}
             {this.props.subject}
           </a>
+
         </div>
         <Router>
-          <Route path="/message/:id" render={({match})=>(
+          <Route path="/message/:id(\d+)" render={({match})=>(
             parseInt(match.params.id, 10) === this.props.id ? <Body id={this.props.id} /> : null
           )} />
         </Router>

@@ -19,7 +19,7 @@ class Body extends Component{
         </div>
         <div className="col-xs-11 text-left" >
           <div className="message-body">
-            <span>test</span>
+            test
           </div>
         </div>
       </div>

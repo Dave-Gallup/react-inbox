@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Messages from './Components/Messages/Messages.js'
-import Toolbar  from './Components/Toolbar/Toolbar.js'
-// import Compose  from './Components/Compose/Compose.js'
+import Messages from './Components/Messages/Messages.js';
+import Toolbar  from './Components/Toolbar/Toolbar.js';
+import Compose  from './Components/Compose/Compose.js';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 // import Api from './utils/Api';
 
@@ -11,20 +12,41 @@ class App extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-md-8 col-md-offset-2">
-          <div className="App">
-            <div className="Toolbar text-left">
-              <Toolbar />
+
+          <Router>
+            <div className="row">
+              <div className="col-md-8 col-md-offset-2">
+                <div className="App">
+                  <Toolbar />
+                  <Route exact path="/compose" component={Compose}/>
+
+                  <div className="list">
+                    <Messages />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="list">
-              <Messages />
-            </div>
-          </div>
-        </div>
-      </div>
+          </Router>
+
+
+
     );
   }
+  //
+  // <div className="row">
+  //   <div className="col-md-8 col-md-offset-2">
+  //     <div className="App">
+  //       <div className="Toolbar text-left">
+  //         <Toolbar />
+  //       </div>
+  //       <div className="list">
+  //         <Messages />
+  //       </div>
+  //     </div>
+  //   </div>
+  // </div>
+
+
   // render() {
   //   return (
   //     <div className="row">
@@ -335,7 +357,7 @@ class App extends Component {
   //   }
   //   return ids;
   // }
-  
+
   // static testFn(){
   //   return fetch(`http://localhost:8181/api/messages`)
   //   .then(response => response.json())

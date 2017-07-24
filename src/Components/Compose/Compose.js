@@ -3,11 +3,14 @@ import React, { Component } from 'react';
 
 class Compose extends Component{
 
+  onSendClick(e){
+    e.preventDefault();
+    var subject = document.getElementById('subject').value;
+    var body = document.getElementById('body').value;
+    this.props.updateSendMessage(subject, body);
+  }
 
   render(){
-
-
-
     return (
       <form className="form-horizontal well">
         <div className="form-group">
@@ -29,7 +32,7 @@ class Compose extends Component{
         </div>
         <div className="form-group">
           <div className="col-sm-8 col-sm-offset-2">
-            <input type="submit" value="Send" className="btn btn-primary" onClick={"#"}/>
+            <input type="submit" value="Send" className="btn btn-primary" onClick={this.onSendClick}/>
           </div>
         </div>
       </form>

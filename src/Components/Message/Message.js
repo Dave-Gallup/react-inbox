@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Label from '../Label/Label.js';
+import Body from '../Body/Body.js';
 import { toggleSelected, toggleStarred } from '../../actions/actions';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class Message extends Component{
 
@@ -40,9 +42,15 @@ class Message extends Component{
             {this.props.subject}
           </a>
         </div>
+        <Router>
+          <Route path="/message/:id" render={({match})=>(
+            parseInt(match.params.id, 10) === this.props.id ? <Body id={this.props.id} /> : null
+          )} />
+        </Router>
       </div>
     );
   }
+  //parseInt(match.params.id) === this.props.id ? 'this' : ''
   // render(){
   //   var star = this.props.starred ? 'fa-star' : 'fa-star-o';
   //   var read = this.props.read ? 'read' : 'unread';

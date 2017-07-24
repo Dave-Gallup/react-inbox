@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Message from '../Message/Message.js';
 import { fetchMessages } from '../../actions/actions';
 
+
 class Messages extends Component{
 
   componentDidMount() {
@@ -12,9 +13,9 @@ class Messages extends Component{
 
   render(){
     return (
-      <div className="messages-list">
-        {this.props.messageList.map(msg => <Message key={msg} id={msg}/>)}
-      </div>
+        <div className="messages-list">
+          {this.props.messageList.map(msg => <Message key={msg} id={msg}/>)}
+        </div>
     );
   }
   // render(){

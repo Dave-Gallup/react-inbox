@@ -69,7 +69,12 @@ class Toolbar extends Component{
   }
 
   onComposeClick(){
-    console.log('COMPOSE');
+    if(window.location.pathname === `/compose`){
+      window.location.href='http://localhost:3000/';
+    }
+    else{
+      window.location.href=`http://localhost:3000/compose`;
+    }
   }
 
   render(){

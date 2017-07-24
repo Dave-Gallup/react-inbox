@@ -115,8 +115,8 @@ class Toolbar extends Component{
             <option value="gschool">gschool</option>
           </select>
 
-          <button className="btn btn-default" disabled={this.props.selectedIds.length === 0?true:false} >
-            <i className="fa fa-trash-o" onClick={this.onDeleteClick}></i>
+          <button className="btn btn-default" disabled={this.props.selectedIds.length === 0?true:false}  onClick={this.onDeleteClick}>
+            <i className="fa fa-trash-o"></i>
           </button>
         </div>
       </div>

@@ -8,7 +8,8 @@ import {
   SET_READ,
   ADD_LABEL,
   REMOVE_LABEL,
-  DELETE_MESSAGES
+  DELETE_MESSAGES,
+  ADD_MESSAGE
 } from '../actions/actions';
 
 export function messages(state = { messageList:[], messageMap:{} }, action) {
@@ -40,6 +41,9 @@ export function messages(state = { messageList:[], messageMap:{} }, action) {
 
     case DELETE_MESSAGES:
       return updateDeletes(state, action.ids);
+
+    case ADD_MESSAGE:
+      return addMessage(state, action.result);
 
     default:
       return state;
@@ -121,8 +125,20 @@ function updateDeletes(state, ids){
   return newState;
 }
 
-
-
+function addMessage(state, result){
+  var newState = {...state};
+  newState.messageMap = {...state.messageMap};
+  newState.messageList = [...state.messageList];
+  newState.messageMap[result.id] =
+    {
+      id: result.id,
+      labels: result.labels,
+      read: result.read,
+      starred: result.starred,
+      subject: result.subject
+    };
+  return newState;
+}
 
 
 

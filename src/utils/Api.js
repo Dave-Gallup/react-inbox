@@ -83,5 +83,33 @@ export default class Api {
     });
   }
 
+  static postSendMessage(messageSubject, messageBody){
+    var newSubjectStr = Api.copyString(messageSubject);
+    var newBodyStr = Api.copyString(messageBody);
+    console.log(newSubjectStr);
+    var newBody = {
+      "subject": newSubjectStr,
+      "body": newBodyStr
+    };
+
+    return fetch(`${URI}/messages`, {
+      headers:  {
+                  "Accept"      : "application/json",
+                  "Content-Type": "application/json"
+                },
+      method: 'POST',
+      body: JSON.stringify(newBody)
+    });
+  }
+
+  static copyString(str){
+    var newStr = '';
+    for(let i = 0; i < str.length; i++){
+      newStr += str[i];
+    }
+    return newStr;
+  }
+
+
 }
 

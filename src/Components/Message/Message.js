@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Label from '../Label/Label.js';
 import Body from '../Body/Body.js';
-import { toggleSelected, toggleStarred } from '../../actions/actions';
+import { toggleSelected, toggleStarred, setRead } from '../../actions/actions';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class Message extends Component{
@@ -25,13 +25,13 @@ class Message extends Component{
   }
 
   onSubjectClick(){
+    this.props.setRead([this.props.id], true);
     if(window.location.pathname === `/message/${this.props.id}`){
       window.location.href='http://localhost:3000/';
     }
     else{
       window.location.href=`http://localhost:3000/message/${this.props.id}`;
     }
-
   }
 
 
@@ -144,7 +144,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   toggleSelected,
-  toggleStarred
+  toggleStarred,
+  setRead
 },
 dispatch);
 

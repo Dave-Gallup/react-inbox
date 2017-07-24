@@ -7,6 +7,7 @@ export const SET_READ          = 'SET_READ';
 export const ADD_LABEL         = 'ADD_LABEL';
 export const REMOVE_LABEL      = 'REMOVE_LABEL';
 export const DELETE_MESSAGES   = 'DELETE_MESSAGES';
+export const ADD_MESSAGE       = 'ADD_MESSAGE';
 
 
 export function toggleSelected(id){
@@ -92,11 +93,23 @@ export function removeLabel(ids, label){
 
 export function deleteMessages(ids){
   return (dispatch, getState, { Api }) => {
-    console.log('deleting ', ids);
     Api.patchDeleteMessages(ids)
     .then(result => {
       if(result.status === 200){
         dispatch({type:DELETE_MESSAGES, ids})
+      }
+    })
+    .catch(err => err);
+  }
+}
+
+export function addMessage(subject, body){
+  return (dispatch, getState, { Api }) => {
+    console.log('adding ', subject, body);
+    Api.postSendMessage(subject, body)
+    .then(result => {
+      if(result.status === 200){
+        dispatch({type:ADD_MESSAGE, result})
       }
     })
     .catch(err => err);

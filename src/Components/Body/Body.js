@@ -24,9 +24,7 @@ class Body extends Component{
         </div>
       </div>
     );
-
   }
-
 }
 
 const mapStateToProps = (state) => {

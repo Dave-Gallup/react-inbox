@@ -8,7 +8,7 @@ import {
   toggleStarred,
   setRead,
 } from '../../actions/actions';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 class Message extends Component{
 
@@ -29,17 +29,20 @@ class Message extends Component{
   }
 
   onSubjectClick(){
-    this.props.setRead([this.props.id], true);
-    if(window.location.pathname === `/message/${this.props.id}`){
-      window.location.href='http://localhost:3000/';
+
+    if(this.props.location.pathname === `/message/${this.props.id}`){
+      this.props.history.push('/');
     }
     else{
-      window.location.href=`http://localhost:3000/message/${this.props.id}`;
+      this.props.history.push(`/message/${this.props.id}`);
     }
+    this.props.setRead([this.props.id], true);
+
   }
 
 
   render(){
+
     return (
       <div  className={`row message ${this.props.read?'':'un'}read ${this.props.selected?'selected':''}`}>
         <div className="col-xs-1">
@@ -58,11 +61,9 @@ class Message extends Component{
             {this.props.subject}
           </a>
         </div>
-        <Router>
           <Route path="/message/:id(\d+)" render={({match})=>(
             parseInt(match.params.id, 10) === this.props.id ? <Body id={this.props.id} /> : null
           )} />
-        </Router>
       </div>
     );
   }

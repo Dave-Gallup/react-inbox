@@ -75,11 +75,11 @@ class Toolbar extends Component{
 
   onComposeClick(){
 
-    if(this.props.location.pathname === '/'){
-      this.props.history.push('/compose');
+    if(this.props.location.pathname === '/compose'){
+      this.props.history.push('/');
     }
     else{
-      this.props.history.push('/');
+      this.props.history.push('/compose');
     }
   }
 

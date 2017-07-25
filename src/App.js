@@ -19,7 +19,7 @@ class App extends Component {
                   <Route exact path="/compose" component={Compose}/>
 
                   <div className="list">
-                    <Messages />
+                    <Route path="/" component={Messages} />
                   </div>
                 </div>
               </div>

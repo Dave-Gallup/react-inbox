@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Message from '../Message/Message.js';
 import { fetchMessages } from '../../actions/actions';
-
+import { Route } from 'react-router-dom';
 
 class Messages extends Component{
 
@@ -12,10 +12,15 @@ class Messages extends Component{
   }
 
   render(){
+
     return (
+
         <div className="messages-list">
-          {this.props.messageList.map(msg => <Message key={msg} id={msg}/>)}
+        {this.props.messageList.map(id => <Route path='/' render={(props) => (
+          <Message {...props} key={id} id={id} />
+        )}/>)}
         </div>
+
     );
   }
 }

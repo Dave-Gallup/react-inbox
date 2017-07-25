@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+// import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 
 import {
   selectAll,
@@ -22,6 +24,9 @@ class Toolbar extends Component{
     this.onAddLabelChange    = this.onAddLabelChange.bind(this);
     this.onRemoveLabelChange = this.onRemoveLabelChange.bind(this);
     this.onDeleteClick       = this.onDeleteClick.bind(this);
+    this.onComposeClick      = this.onComposeClick.bind(this);
+
+    // console.log('history>>>',this.props.history);
   }
 
   checkboxClass(){
@@ -69,11 +74,12 @@ class Toolbar extends Component{
   }
 
   onComposeClick(){
-    if(window.location.pathname === `/compose`){
-      window.location.href='http://localhost:3000/';
+
+    if(this.props.location.pathname === '/'){
+      this.props.history.push('/compose');
     }
     else{
-      window.location.href=`http://localhost:3000/compose`;
+      this.props.history.push('/');
     }
   }
 

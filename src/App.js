@@ -15,7 +15,7 @@ class App extends Component {
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
                 <div className="App">
-                  <Toolbar />
+                  <Route path="/" component={Toolbar} />
                   <Route exact path="/compose" component={Compose}/>
 
                   <div className="list">

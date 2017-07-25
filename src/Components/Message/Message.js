@@ -53,12 +53,10 @@ class Message extends Component{
           </div>
         </div>
         <div className="col-xs-11 text-left" >
-
           <a onClick={this.onSubjectClick}>
             {this.props.labels.map((el, i) => <Label key={el} messageId={this.props.id} labelId={i}/>)}
             {this.props.subject}
           </a>
-
         </div>
         <Router>
           <Route path="/message/:id(\d+)" render={({match})=>(
@@ -68,9 +66,6 @@ class Message extends Component{
       </div>
     );
   }
-
-
-
 }
 
 const mapStateToProps = (state, ownProps) => {

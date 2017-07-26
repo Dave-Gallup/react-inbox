@@ -16,10 +16,7 @@ class App extends Component {
                 <div className="App">
                   <Route path="/" component={Toolbar} />
                   <Route exact path="/compose" component={Compose}/>
-
-                  <div className="list">
-                    <Route path="/" component={Messages} />
-                  </div>
+                  <Route path="/" component={Messages} />
                 </div>
               </div>
             </div>

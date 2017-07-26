@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message should render with read=true prop passed in 1`] = `
+<div
+  className="row message read "
+>
+  <div
+    className="col-xs-1"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-xs-2"
+      >
+        <input
+          checked=""
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+      <div
+        className="col-xs-2"
+      >
+        <i
+          className="star fa fa-star-o"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-xs-11 text-left"
+  >
+    <a
+      onClick={[Function]}
+    />
+  </div>
+  <Route
+    path="/message/:id(\\\\d+)"
+    render={[Function]}
+  />
+</div>
+`;
+
+exports[`Message should render with selected=true prop passed in 1`] = `
+<div
+  className="row message unread selected"
+>
+  <div
+    className="col-xs-1"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-xs-2"
+      >
+        <input
+          checked="checked"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+      <div
+        className="col-xs-2"
+      >
+        <i
+          className="star fa fa-star-o"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-xs-11 text-left"
+  >
+    <a
+      onClick={[Function]}
+    />
+  </div>
+  <Route
+    path="/message/:id(\\\\d+)"
+    render={[Function]}
+  />
+</div>
+`;
+
+exports[`Message should render with starred=true prop passed in 1`] = `
+<div
+  className="row message unread "
+>
+  <div
+    className="col-xs-1"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-xs-2"
+      >
+        <input
+          checked=""
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+      <div
+        className="col-xs-2"
+      >
+        <i
+          className="star fa fa-star"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-xs-11 text-left"
+  >
+    <a
+      onClick={[Function]}
+    />
+  </div>
+  <Route
+    path="/message/:id(\\\\d+)"
+    render={[Function]}
+  />
+</div>
+`;
+
+exports[`Message should render without any props other than empty labels defined 1`] = `
+<div
+  className="row message unread "
+>
+  <div
+    className="col-xs-1"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-xs-2"
+      >
+        <input
+          checked=""
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+      <div
+        className="col-xs-2"
+      >
+        <i
+          className="star fa fa-star-o"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-xs-11 text-left"
+  >
+    <a
+      onClick={[Function]}
+    />
+  </div>
+  <Route
+    path="/message/:id(\\\\d+)"
+    render={[Function]}
+  />
+</div>
+`;

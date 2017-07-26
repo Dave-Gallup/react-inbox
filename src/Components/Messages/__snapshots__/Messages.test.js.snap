@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Messages should render with messageList defined and populated 1`] = `
+<div
+  className="messages-list"
+>
+  <Route
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    path="/"
+    render={[Function]}
+  />
+</div>
+`;
+
+exports[`Messages should render without any props other than empty messageList defined 1`] = `
+<div
+  className="messages-list"
+/>
+`;

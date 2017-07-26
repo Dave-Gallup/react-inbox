@@ -5,27 +5,24 @@ import Message from '../Message/Message.js';
 import { fetchMessages } from '../../actions/actions';
 import { Route } from 'react-router-dom';
 
-class Messages extends Component{
+export class Messages extends Component{
 
   componentDidMount() {
     this.props.fetchMessages();
   }
 
   render(){
-
     return (
-
-        <div className="messages-list">
-        {this.props.messageList.map(id => <Route path='/' render={(props) => (
-          <Message {...props} key={id} id={id} />
-        )}/>)}
-        </div>
-
+      <div className="messages-list">
+      {this.props.messageList.map(id => <Route path='/' key={id} render={(props) => (
+        <Message {...props} key={id} id={id} />
+      )}/>)}
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   const messageMap = state.messages.messageMap;
   const messageList = state.messages.messageList;
   return {
@@ -34,7 +31,7 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+export const mapDispatchToProps = dispatch => bindActionCreators({
   fetchMessages
 },
 dispatch);

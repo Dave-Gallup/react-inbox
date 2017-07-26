@@ -26,7 +26,6 @@ class Toolbar extends Component{
     this.onDeleteClick       = this.onDeleteClick.bind(this);
     this.onComposeClick      = this.onComposeClick.bind(this);
 
-    // console.log('history>>>',this.props.history);
   }
 
   checkboxClass(){

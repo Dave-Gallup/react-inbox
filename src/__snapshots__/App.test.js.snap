@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders App.js 1`] = `
+<BrowserRouter>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-8 col-md-offset-2"
+    >
+      <div
+        className="App"
+      >
+        <Route
+          component={[Function]}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/compose"
+        />
+        <Route
+          component={[Function]}
+          path="/"
+        />
+      </div>
+    </div>
+  </div>
+</BrowserRouter>
+`;

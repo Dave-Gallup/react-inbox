@@ -10,7 +10,7 @@ import {
 } from '../../actions/actions';
 import { Route } from 'react-router-dom';
 
-class Message extends Component{
+export class Message extends Component{
 
   constructor(props){
     super(props);
@@ -69,7 +69,7 @@ class Message extends Component{
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
 
   const subject  = state.messages.messageMap[ownProps.id].subject;
   const labels   = state.messages.messageMap[ownProps.id].labels;
@@ -87,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+export const mapDispatchToProps = dispatch => bindActionCreators({
   toggleSelected,
   toggleStarred,
   setRead

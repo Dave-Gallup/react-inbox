@@ -14,6 +14,7 @@ import {
 } from '../actions/actions';
 
 export function messages(state = { messageList:[], messageMap:{} }, action) {
+
   switch (action.type) {
 
     case MESSAGES_RECEIVED:
@@ -104,6 +105,7 @@ function updateAddLabels(state, ids, label){
 }
 
 function updateRemoveLabels(state, ids, label){
+
   var newState = {...state};
   newState.messageMap = {...state.messageMap};
 
